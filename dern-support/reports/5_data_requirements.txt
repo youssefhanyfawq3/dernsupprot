@@ -1,0 +1,149 @@
+DATA REQUIREMENTS (ERD)
+
+1. ENTITIES AND RELATIONSHIPS
+---------------------------
+
+Users
+-----
+- id (PK)
+- name
+- email
+- password
+- is_staff
+- created_at
+- updated_at
+|
++--< Support Requests
+    - id (PK)
+    - user_id (FK)
+    - title
+    - description
+    - status
+    - created_at
+    - updated_at
+    |
+    +--< Comments
+        - id (PK)
+        - support_request_id (FK)
+        - user_id (FK)
+        - content
+        - created_at
+        - updated_at
+
+2. RELATIONSHIPS
+---------------
+User -> Support Requests: One-to-Many
+- A user can have multiple support requests
+- Each support request belongs to one user
+
+Support Request -> Comments: One-to-Many
+- A support request can have multiple comments
+- Each comment belongs to one support request
+
+User -> Comments: One-to-Many
+- A user can create multiple comments
+- Each comment is created by one user
+
+3. CONSTRAINTS
+-------------
+Users:
+- email must be unique
+- password must be hashed
+- is_staff is boolean with default false
+
+Support Requests:
+- status must be one of: pending, in_progress, completed
+- title maximum length: 255 characters
+- description can be lengthy text
+- user_id must exist in users table
+
+Comments:
+- content cannot be empty
+- support_request_id must exist in support_requests table
+- user_id must exist in users table
+
+4. INDEXES
+---------
+Users:
+- Primary Key: id
+- Unique Index: email
+
+Support Requests:
+- Primary Key: id
+- Foreign Key: user_id
+- Index: status (for filtering)
+- Index: created_at (for sorting)
+
+Comments:
+- Primary Key: id
+- Foreign Key: support_request_id
+- Foreign Key: user_id
+- Index: created_at (for sorting)
+
+5. DATA TYPES
+------------
+Users:
+- id: unsigned bigint
+- name: varchar(255)
+- email: varchar(255)
+- password: varchar(255)
+- is_staff: boolean
+- timestamps: datetime
+
+Support Requests:
+- id: unsigned bigint
+- user_id: unsigned bigint
+- title: varchar(255)
+- description: text
+- status: enum
+- timestamps: datetime
+
+Comments:
+- id: unsigned bigint
+- support_request_id: unsigned bigint
+- user_id: unsigned bigint
+- content: text
+- timestamps: datetime
+
+6. MIGRATIONS
+------------
+Users Table:
+```sql
+CREATE TABLE users (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    is_staff BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL
+);
+```
+
+Support Requests Table:
+```sql
+CREATE TABLE support_requests (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT UNSIGNED NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    status ENUM('pending','in_progress','completed') DEFAULT 'pending',
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+```
+
+Comments Table:
+```sql
+CREATE TABLE comments (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    support_request_id BIGINT UNSIGNED NOT NULL,
+    user_id BIGINT UNSIGNED NOT NULL,
+    content TEXT NOT NULL,
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL,
+    FOREIGN KEY (support_request_id) REFERENCES support_requests(id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+```

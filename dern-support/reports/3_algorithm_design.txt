@@ -1,0 +1,93 @@
+ALGORITHM DESIGN (FLOWCHART)
+
+1. Support Request Lifecycle
+--------------------------
+[User Login] → [Dashboard]
+     ↓
+[Create Request] → [Submit]
+     ↓
+[Pending Status] → [Staff Review]
+     ↓
+[Update Status] → [In Progress]
+     ↓
+[Technician Assignment]
+     ↓
+[Work Completion]
+     ↓
+[Status Update] → [Completed]
+     ↓
+[Customer Notification]
+
+2. Authentication Flow
+--------------------
+[Start] → [Login Page]
+     ↓
+[Enter Credentials]
+     ↓
+[Validate Input] → [Invalid] → [Show Error]
+     ↓                            ↑
+[Check Database] → [Invalid] -----+
+     ↓
+[Create Session]
+     ↓
+[Redirect to Dashboard]
+
+3. Support Request Creation
+-------------------------
+[Start] → [Auth Check] → [Not Auth] → [Login]
+     ↓
+[Show Form]
+     ↓
+[Input Validation] → [Invalid] → [Show Errors]
+     ↓
+[Save Request]
+     ↓
+[Send Notifications]
+     ↓
+[Show Success]
+
+4. Status Update Process
+----------------------
+[Staff Login] → [View Requests]
+     ↓
+[Select Request]
+     ↓
+[Update Status] → [Validate] → [Invalid] → [Show Error]
+     ↓
+[Save Changes]
+     ↓
+[Notify Customer]
+     ↓
+[Log Activity]
+
+5. Assignment Algorithm
+---------------------
+[New Request] → [Check Priority]
+     ↓
+[Load Technicians]
+     ↓
+[Check Availability]
+     ↓
+[Calculate Workload]
+     ↓
+[Sort by Expertise]
+     ↓
+[Assign Request]
+     ↓
+[Send Notification]
+
+6. Notification System
+--------------------
+[Event Trigger] → [Check Preferences]
+     ↓
+[Format Message]
+     ↓
+[Select Channel] → [Email] → [Send Email]
+     ↓              ↓
+[Queue Job]    [In-App] → [Create Alert]
+     ↓
+[Process Queue]
+     ↓
+[Mark Sent]
+     ↓
+[Log Result]

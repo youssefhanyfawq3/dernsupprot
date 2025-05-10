@@ -1,0 +1,124 @@
+VISUAL DESIGN (UI/UX)
+
+1. COLOR SCHEME
+--------------
+Primary Colors:
+- Blue (#3B82F6): Main actions, links
+- White (#FFFFFF): Background
+- Dark Gray (#1F2937): Text
+- Green (#10B981): Success states
+- Yellow (#F59E0B): Warning states
+- Red (#EF4444): Error states
+
+2. TYPOGRAPHY
+------------
+- Headings: Inter, sans-serif
+- Body: Inter, sans-serif
+- Monospace: Consolas (for technical details)
+
+3. LAYOUT STRUCTURE
+-----------------
+Header:
+- Logo
+- Navigation Menu
+- User Profile
+- Dark Mode Toggle
+
+Sidebar:
+- Main Navigation
+- Quick Actions
+- Status Indicators
+
+Main Content:
+- Page Title
+- Action Buttons
+- Content Area
+- Data Tables/Forms
+
+Footer:
+- Copyright
+- Links
+- Contact Information
+
+4. COMPONENTS
+------------
+Buttons:
+- Primary: Blue, rounded corners
+- Secondary: Gray, outlined
+- Danger: Red
+- Success: Green
+
+Forms:
+- Labels above inputs
+- Placeholder text
+- Validation feedback
+- Error messages below fields
+
+Tables:
+- Striped rows
+- Hover states
+- Sortable columns
+- Pagination
+
+Cards:
+- White background
+- Subtle shadow
+- Rounded corners
+- Hover effects
+
+5. RESPONSIVE DESIGN
+------------------
+Breakpoints:
+- Mobile: 0-640px
+- Tablet: 641-1024px
+- Desktop: 1025px+
+
+Mobile Adaptations:
+- Collapsible sidebar
+- Stack layout elements
+- Simplified tables
+- Touch-friendly inputs
+
+6. ACCESSIBILITY
+---------------
+- WCAG 2.1 AA compliance
+- High contrast ratios
+- Keyboard navigation
+- Screen reader support
+- Focus indicators
+- Alt text for images
+- Semantic HTML
+
+7. USER FLOWS
+------------
+Customer Journey:
+1. Login/Register
+2. Dashboard Overview
+3. Create Support Request
+4. Track Request Status
+5. View History
+
+Staff Journey:
+1. Login
+2. View All Requests
+3. Update Status
+4. Assign Technicians
+5. Generate Reports
+
+8. INTERACTION DESIGN
+-------------------
+- Smooth transitions
+- Loading states
+- Success/error feedback
+- Progressive disclosure
+- Inline validation
+- Tooltips
+- Confirmation dialogs
+
+9. DARK MODE
+-----------
+- Dark background (#0F172A)
+- Light text (#F3F4F6)
+- Adjusted contrast
+- Preserved readability
+- Smooth transition
